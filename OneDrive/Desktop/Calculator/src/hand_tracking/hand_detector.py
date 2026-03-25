@@ -44,7 +44,10 @@ class HandDetector:
         rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         self.results = self.hands.process(rgb)
 
+        print("Processing frame...")
+
         if self.results.multi_hand_landmarks:
+            print("Hand detected!")
             for handLms in self.results.multi_hand_landmarks:
                 if draw:
                     self.mpDraw.draw_landmarks(
@@ -89,5 +92,4 @@ class HandDetector:
                 fingers.append(1)
             else:
                 fingers.append(0)
-
-        return fingers
+
